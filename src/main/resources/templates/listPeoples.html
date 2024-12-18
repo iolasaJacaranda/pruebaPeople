@@ -1,0 +1,29 @@
+<html  th:replace="layout.html">
+
+<div th:fragment="mainContent">
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Teléfono</th>
+      <th scope="col">Dirección</th>
+      <th scope="col">Edad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="p : ${list}">
+    	<td th:text="${p.id}"></td>
+    	<td th:text="${p.getName()}"></td>
+    	<td th:text="${p.surname}"></td>
+    	<td th:text="${p.phone}"></td>
+    	<td th:text="${p.address}"></td>
+    	<td th:text="${p.age}"></td>
+     	<td><a th:href="@{people/del(id=${p.id})}"><button type="button" class="btn btn-primary">Borrar</button></a></td>
+       	<td><a th:href="@{people/edit(id=${p.id})}"><button type="button" class="btn btn-primary">Editar</button></a></td>
+     
+    </tr>
+  </tbody>
+</table>

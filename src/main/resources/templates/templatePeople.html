@@ -1,0 +1,55 @@
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout.html">
+
+<div th:fragment="mainContent">
+<div th:text="${msg}"></div>
+<form th:action=${action} method=post th:object="${people}">
+  <div class="form-group row">
+    <label for="id" class="col-4 col-form-label">Id</label> 
+    <div class="col-8">
+      <input id="id" name="id" th:field="*{id}" th:value="*{id}" type="text" class="form-control" hidden>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="name" class="col-4 col-form-label">Nombre</label> 
+    <div class="col-8">
+      <input id="name" name="name" type="text" th:field="*{name}" th:attr="readonly=${enable ? null : 'readonly'}" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="surname" class="col-4 col-form-label">Apellido</label> 
+    <div class="col-8">
+      <input id="surname" name="surname" type="text" th:field="*{surname}" th:attr="readonly=${enable ? null : 'readonly'}" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="address" class="col-4 col-form-label">Dirección</label> 
+    <div class="col-8">
+      <input id="address" name="address" type="text"  th:field="*{address}"  th:attr="readonly=${enable ? null : 'readonly'}" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="phone" class="col-4 col-form-label">Teléfono</label> 
+    <div class="col-8">
+      <input id="phone" name="phone" type="text" th:field="*{phone}"  th:attr="readonly=${enable ? null : 'readonly'}" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="age" class="col-4 col-form-label">Edad</label> 
+    <div class="col-8">
+      <input id="age" name="age" type="number" class="form-control" th:field="*{age}" th:attr="readonly=${enable ? null : 'readonly'}"  min=18 step=1>
+    </div>
+  </div> 
+  <div class="form-group row">
+    <div class="offset-4 col-8">
+      <span th:if="${button!=''}">
+      	<button name="submit" type="submit" class="btn btn-primary"><span th:text="${button}"></span></button>
+      </span>
+
+      
+    </div>
+  </div>
+</form>
+      <span th:if="${button==''}">
+      	<a th:href="@{/people}"><button class="btn btn-primary">Volver</button></a>
+      </span>
+</html>
